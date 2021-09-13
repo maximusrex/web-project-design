@@ -4,4 +4,6 @@
 
 This is the main branch.
 
-You can find all the [demo files for class here](https://github.com/maximusrex/web-project-design/tree/gh-pages/demos)
+[course website](https://maximusrex.github.io/web-project-design/)
+
+[demo files](https://github.com/maximusrex/web-project-design/tree/gh-pages/demos)
