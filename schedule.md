@@ -466,16 +466,21 @@ Homework:
 
 React III, React + MongoDB
 
+[Demo Start](https://github.com/maximusrex/web-project-design/tree/gh-pages/demos/11_9_React3_MongoDB/react-demo-3) - note this is exactly where we left off last class
+
 In Class:
 
 - React router (con't if we don't finish on Nov. 9)
 - Intro to MongoDB
+- Set up MongoDB, backend for app
 
 ---
 
 ### November 11, 2021
 
 Mongo DB
+
+- Finish MongoDB app connection, frontend routes and data parsing
 
 ---
 
