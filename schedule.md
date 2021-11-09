@@ -478,7 +478,9 @@ In Class:
 
 ### November 11, 2021
 
-Mongo DB
+Mongo DB 2
+
+In Class:
 
 - Finish MongoDB app connection, frontend routes and data parsing
 
@@ -486,19 +488,23 @@ Mongo DB
 
 ### November 16, 2021
 
-RunwayML and/or ML5.js for machine learning
+**Zoom Class**
+
+Link: tbd
+
+Final project workshop session / drop-in for consultation
 
 ---
 
 ### November 18, 2021
 
-Open for JS Library/Framework of your choosing
+RunwayML and/or ML5.js for machine learning
 
 ---
 
 ### November 23, 2021
 
-Final Project Workshop
+Con't with ML5.js and/or CLM Tracker (face/gesture tracking)
 
 ---
 
