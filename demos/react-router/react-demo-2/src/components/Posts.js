@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import axios from "axios";
+import { Link } from "react-router-dom";
 
 //a single post
 const Post = (props) => (
@@ -7,7 +8,9 @@ const Post = (props) => (
 		<h2>{props.post.post_title}</h2>
 		<span className="post-date">{props.post.post_date}</span>
 		<div className="post-content">{props.post.post_content}</div>
-
+		<Link className="w3-button w3-blue" to={"/edit/" + props.post._id}>
+			Edit
+		</Link>
 		<a
 			className="w3-button w3-red"
 			href="/"

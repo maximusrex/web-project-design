@@ -1,20 +1,21 @@
 import React, { Component } from "react";
-
+//The form for submitting posts
 class Form extends Component {
+	//set the initial state
 	initialState = {
 		title: "",
 		date: "",
 		content: "",
 	};
 	state = this.initialState;
-
+	//what to do when the values change
 	handleChange = (event) => {
 		const { name, value } = event.target;
 		this.setState({
 			[name]: value,
 		});
 	};
-
+	//when form submits, set values to state
 	submitForm = () => {
 		this.props.handleSubmit(this.state);
 		this.setState(this.initialState);

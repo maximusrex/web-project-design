@@ -2,6 +2,9 @@ import React, { Component } from "react";
 import Header from "./components/Header";
 import Posts from "./components/Posts";
 import Form from "./components/Form";
+import About from "./components/About";
+import Navbar from "./components/Navbar";
+import { Routes, Route } from "react-router-dom";
 
 class App extends Component {
 	state = {
@@ -27,8 +30,18 @@ class App extends Component {
 		return (
 			<div className="container w3-container">
 				<Header />
-				<Posts postdata={posts} removePost={this.removePost} />
-				<Form handleSubmit={this.handleSubmit} />
+				<Navbar />
+				<Routes>
+					<Route path="/about" element={<About />} />
+					<Route
+						path="/"
+						element={<Posts postdata={posts} removePost={this.removePost} />}
+					/>
+					<Route
+						path="/create"
+						element={<Form handleSubmit={this.handleSubmit} />}
+					/>
+				</Routes>
 			</div>
 		);
 	}

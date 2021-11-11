@@ -4,6 +4,7 @@ import Posts from "./components/Posts";
 import Form from "./components/Form";
 import About from "./components/About";
 import Navbar from "./components/Navbar";
+import Edit from "./components/Edit";
 import { Routes, Route } from "react-router-dom";
 
 //change to remove data from this, add to other routes
@@ -18,6 +19,7 @@ class App extends Component {
 					<Route path="/" element={<Posts />}></Route>
 					<Route path="/create" element={<Form />}></Route>
 					<Route path="/about" element={<About />}></Route>
+					<Route path="/edit/:id" element={<Edit />} />
 				</Routes>
 			</div>
 		);
