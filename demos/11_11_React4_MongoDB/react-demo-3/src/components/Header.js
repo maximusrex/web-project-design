@@ -15,7 +15,7 @@ const Tagline = () => {
 class Header extends Component {
 	render() {
 		return (
-			<div className="myHeader w3-panel w3-light-blue">
+			<div className="myHeader w3-light-blue">
 				<Title />
 				<Tagline />
 			</div>

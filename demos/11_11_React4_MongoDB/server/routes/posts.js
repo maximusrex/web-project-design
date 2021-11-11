@@ -16,7 +16,7 @@ postRoutes.route("/posts").get((req, res) => {
 			res.json(result);
 		});
 });
-//route to add a new post.  This will pass data through myobj, from the req.body.  we'll have to set up to send this data from the front end
+//route to add a new post.  This will pass data through myobj, received from the frontend thru the req.body.  we'll have to set up to send this data from the front end
 postRoutes.route("create/add").post((req, response) => {
 	let db_connect = dbo.getDb();
 	let myobj = {
