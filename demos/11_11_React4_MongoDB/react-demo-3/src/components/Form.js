@@ -1,36 +1,70 @@
 import React, { Component } from "react";
+import axios from "axios";
 
 class Form extends Component {
-	initialState = {
-		title: "",
-		date: "",
-		content: "",
-	};
-	state = this.initialState;
+	//this is a constructor to bind our data to the methods
+	constructor(props) {
+		super(props);
+		this.onChangePostTitle = this.onChangePostTitle.bind(this);
+		this.onChangePostDate = this.onChangePostDate.bind(this);
+		this.onChangePostContent = this.onChangePostContent.bind(this);
+		this.onSubmit = this.onSubmit.bind(this);
 
-	handleChange = (event) => {
-		const { name, value } = event.target;
+		this.state = {
+			post_title: "",
+			post_date: "",
+			post_content: "",
+		};
+	}
+
+	//These methods update the state properties
+	onChangePostTitle(e) {
 		this.setState({
-			[name]: value,
+			post_title: e.target.value,
 		});
-	};
+	}
 
-	submitForm = () => {
-		this.props.handleSubmit(this.state);
-		this.setState(this.initialState);
-	};
+	onChangePostDate(e) {
+		this.setState({
+			post_date: e.target.value,
+		});
+	}
+
+	onChangePostContent(e) {
+		this.setState({
+			post_content: e.target.value,
+		});
+	}
+
+	onSubmit(e) {
+		e.preventDefault();
+
+		const newpost = {
+			post_title: this.state.post_title,
+			post_date: this.state.post_date,
+			post_content: this.state.post_content,
+		};
+		axios.post("http://localhost:5000/create/add", newpost).then((res) => {
+			console.log(res.data);
+		});
+		this.setState({
+			post_title: "",
+			post_date: "",
+			post_content: "",
+		});
+	}
 
 	render() {
 		const { title, date, content } = this.state;
 		return (
-			<form>
+			<form onSubmit={this.onSubmit}>
 				<label htmlFor="title">Title</label>
 				<input
 					type="text"
 					name="title"
 					id="title"
 					value={title}
-					onChange={this.handleChange}
+					onChange={this.onChangePostTitle}
 				/>
 				<label htmlFor="date">Date (mm-dd-yy)</label>
 				<input
@@ -38,7 +72,7 @@ class Form extends Component {
 					name="date"
 					id="date"
 					value={date}
-					onChange={this.handleChange}
+					onChange={this.onChangePostDate}
 				/>
 				<label htmlFor="content">Content</label>
 				<textarea
@@ -48,9 +82,9 @@ class Form extends Component {
 					rows="5"
 					cols="40"
 					value={content}
-					onChange={this.handleChange}
+					onChange={this.onChangePostContent}
 				/>
-				<input type="button" value="submit" onClick={this.submitForm} />
+				<input type="submit" value="create post" />
 			</form>
 		);
 	}

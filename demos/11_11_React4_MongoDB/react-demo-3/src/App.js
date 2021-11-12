@@ -4,43 +4,20 @@ import Posts from "./components/Posts";
 import Form from "./components/Form";
 import About from "./components/About";
 import Navbar from "./components/Navbar";
+import Edit from "./components/Edit";
 import { Routes, Route } from "react-router-dom";
 
 class App extends Component {
-	state = {
-		posts: [],
-	};
-
-	removePost = (index) => {
-		const { posts } = this.state;
-
-		this.setState({
-			posts: posts.filter((post, i) => {
-				return i !== index;
-			}),
-		});
-	};
-
-	handleSubmit = (post) => {
-		this.setState({ posts: [...this.state.posts, post] });
-	};
-
 	render() {
-		const { posts } = this.state;
 		return (
 			<div className="container w3-container">
 				<Header />
 				<Navbar />
 				<Routes>
 					<Route path="/about" element={<About />} />
-					<Route
-						path="/"
-						element={<Posts postdata={posts} removePost={this.removePost} />}
-					/>
-					<Route
-						path="/create"
-						element={<Form handleSubmit={this.handleSubmit} />}
-					/>
+					<Route path="/" element={<Posts />} />
+					<Route path="/create" element={<Form />} />
+					<Route path="/edit/:id" element={<Edit />} />
 				</Routes>
 			</div>
 		);
