@@ -2,9 +2,9 @@ import React, { Component } from "react";
 import axios from "axios";
 import { Link } from "react-router-dom";
 
-//a single post
+//the single post
 const Post = (props) => (
-	<div className="w3-card w3-panel">
+	<div className="w3-card w3-panel postMain">
 		<h2>{props.post.post_title}</h2>
 		<span className="post-date">{props.post.post_date}</span>
 		<div className="post-content">{props.post.post_content}</div>

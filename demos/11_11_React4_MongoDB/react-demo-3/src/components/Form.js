@@ -1,5 +1,13 @@
 import React, { Component } from "react";
 import axios from "axios";
+import { useNavigate } from "react-router-dom";
+
+let navigate;
+
+const withRouter = (WrappedComponent) => (props) => {
+	navigate = useNavigate();
+	return <WrappedComponent {...props} navigate={navigate} />;
+};
 
 class Form extends Component {
 	//this is a constructor to bind our data to the methods
@@ -52,6 +60,7 @@ class Form extends Component {
 			post_date: "",
 			post_content: "",
 		});
+		navigate("/");
 	}
 
 	render() {
@@ -90,4 +99,4 @@ class Form extends Component {
 	}
 }
 
-export default Form;
+export default withRouter(Form);

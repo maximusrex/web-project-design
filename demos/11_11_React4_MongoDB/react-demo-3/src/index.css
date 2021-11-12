@@ -43,3 +43,15 @@ form {
 	margin: 1em auto;
 	padding: 2em;
 }
+
+.postMain {
+	padding: 1em;
+}
+
+.postMain .w3-button {
+	margin: 0.5em;
+}
+
+.post-content {
+	padding: 1em;
+}
