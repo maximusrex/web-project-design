@@ -500,7 +500,14 @@ Final project workshop session / drop-in for consultation
 
 ### November 18, 2021
 
-RunwayML and/or ML5.js for machine learning
+Intro to ML5.js for machine learning
+
+[Ml5 + p5 boilerplate on Github](https://github.com/ml5js/ml5-library/tree/main/examples/p5js/ml5Boilerplate/ml5Boilerplate_Version) - includes all of the library links you'll need for ML5 + p5.js
+![Is this machine learning?](https://imgflip.com/i/5u660a.jpg)
+In Class:
+
+- intro to machine learning
+- Webcam image classification with MobileNet
 
 ---
 
