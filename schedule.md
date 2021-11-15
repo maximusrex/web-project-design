@@ -509,7 +509,12 @@ Intro to ML5.js for machine learning
 In Class:
 
 - intro to machine learning
-- Webcam image classification with MobileNet
+- image, drawing, webcam classification with MobileNet
+- Object detection
+
+Homework:
+
+- Play with ml5.js ([Check out other models here](https://learn.ml5js.org/#/)) + post an example to your homepage
 
 ---
 
