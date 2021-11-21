@@ -504,8 +504,6 @@ Intro to ML5.js for machine learning
 
 [Ml5 + p5 boilerplate on Github](https://github.com/ml5js/ml5-library/tree/main/examples/p5js/ml5Boilerplate/ml5Boilerplate_Version) - includes all of the library links you'll need for ML5 + p5.js
 
-![Is this machine learning?](./assets/images/machine-learning-meme.jpeg)
-
 In Class:
 
 - intro to machine learning
@@ -534,4 +532,4 @@ Final Project Workshop
 
 **Final Project Working Draft Presentation**
 
-**Final Project Due on Scheduled Exam Day**
+**Final Project Due on Friday, Dec 10**
