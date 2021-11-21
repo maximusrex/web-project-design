@@ -19,6 +19,29 @@
 	<body>
 		<div class="main w3-container">
 			<h1>ml5.js: Machine Learning + JavaScript</h1>
+			<ul>
+				Examples
+				<li>
+					<a href="./imageClassification.html"
+						>MobileNet image classification with image</a
+					>
+				</li>
+				<li>
+					<a href="./canvasClassification.html"
+						>MobileNet image classification with canvas drawing</a
+					>
+				</li>
+				<li>
+					<a href="./videoClassification.html"
+						>MobileNet image classification with video</a
+					>
+				</li>
+				<li>
+					<a href="./objectDetect.html"
+						>Video - Object detection with cocossd</a
+					>
+				</li>
+			</ul>
 			<p>
 				<a href="https://ml5js.org/">ML5</a> is a javascript library for
 				approachable machine learning in the browser. These examples work with
@@ -32,22 +55,66 @@
 					for Beginners</a
 				>.
 			</p>
+			<p>
+				Also check out the
+				<a href="https://github.com/ml5js/ml5-library/tree/main/examples"
+					>ml5 github examples folder</a
+				>
+				for a ton of other starter code and examples of what you can do with
+				ml5.
+			</p>
 			<div id="canvas"></div>
+			<div id="results"></div>
 		</div>
 		<script src="https://unpkg.com/ml5@latest/dist/ml5.min.js"></script>
 		<script src="https://cdn.jsdelivr.net/npm/p5@1.4.0/lib/p5.js"></script>
 		<script>
+			let capture;
+			let detections = []; //an emtpy array to store results
 			function setup() {
-				let canvas = createCanvas(400, 400);
+				let canvas = createCanvas(640, 360);
 				background(240);
 				canvas.parent("canvas");
+				capture = createCapture(VIDEO);
+				capture.size(640, 360); //resize the capture to set that box right
+				capture.hide();
+
+				/* uncomment these lines to have a button
+
+			     btn = createButton("Submit Capture");
+				btn.mousePressed(getClassification); */
+
+				// have the model work continously
+				detectObject();
 			}
 
 			function draw() {
-				fill(100, 100, 255);
-				textSize(24);
-				textFont("Helvetica");
-				text("This is the canvas", 100, 200);
+				image(capture, 0, 0, width, height);
+				for (let i = 0; i < detections.length; i++) {
+					let object = detections[i];
+					stroke(0, 255, 0);
+					strokeWeight(4);
+					noFill();
+					rect(object.x / 2, object.y / 2, object.width / 2, object.height / 2);
+					noStroke();
+					fill(255);
+					textSize(24);
+					text(object.label, object.x / 2 + 10, object.y / 2 + 24);
+				}
+			}
+
+			function detectObject() {
+				//for video, we can ask the model to act continuously on the video by passing it here
+				// pass cocossd for the objectDetector
+				detector = ml5.objectDetector("cocossd", capture, () => {
+					//console.log("the model is ready");
+					//now we can just call "detect"
+					detector.detect((err, results) => {
+						//console.log(results);
+						detections = results;
+						detectObject();
+					});
+				});
 			}
 		</script>
 	</body>
