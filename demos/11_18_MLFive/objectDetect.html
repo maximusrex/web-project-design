@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<title>Getting Started with ml5.js</title>
+		<!-- p5 -->
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.2.0/p5.min.js"></script>
+		<!-- ml5 -->
+		<script src="https://unpkg.com/ml5@latest/dist/ml5.min.js"></script>
+	</head>
+	<div id="canvas"></div>
+	<body>
+		<script>
+			let detections = [];
+			let canvas;
+			function setup() {
+				canvas = createCanvas(640, 360);
+				canvas.parent("canvas");
+				capture = createCapture(VIDEO);
+				capture.hide();
+				detectObject();
+			}
+			function draw() {
+				image(capture, 0, 0, width, height);
+				//draw results here!
+				for (let i = 0; i < detections.length; i++) {
+					let object = detections[i];
+					stroke(0, 255, 0);
+					strokeWeight(4);
+					noFill();
+					rect(object.x / 2, object.y / 2, object.width / 2, object.height / 2);
+					fill(255);
+					noStroke();
+					textSize(24);
+					text(object.label, object.x / 2 + 10, object.y / 2 + 24);
+				}
+			}
+
+			function detectObject() {
+				let detector = ml5.objectDetector("cocossd", capture, () => {
+					console.log("the model is ready");
+					detector.detect((err, results) => {
+						if (err) {
+							console.error(err);
+						} else {
+							console.log(results);
+							detections = results;
+							detectObject();
+						}
+					});
+				});
+			}
+		</script>
+	</body>
+</html>
