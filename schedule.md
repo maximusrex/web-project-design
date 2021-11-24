@@ -520,11 +520,15 @@ Homework:
 
 Con't with ML5.js and/or CLM Tracker (face/gesture tracking)
 
+[Demo Code Here](https://github.com/maximusrex/web-project-design/tree/gh-pages/demos/11_23_ml52) - Face tracking / Face tracking Mesh in ml5.js
+
+See Also: [Machine Learning For Artists](https://ml4a.net/) for other ml5 example code and project ideas.
+
 ---
 
 ### November 30, 2021
 
-Final Project Workshop
+**Final Project Working Draft Presentation**
 
 ---
 
