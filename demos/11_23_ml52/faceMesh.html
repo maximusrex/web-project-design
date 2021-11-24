@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<!-- p5 -->
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.2.0/p5.min.js"></script>
+		<!-- ml5 -->
+		<script src="https://unpkg.com/ml5@latest/dist/ml5.min.js"></script>
+		<title>Face Tracking Mesh</title>
+		<style>
+			body {
+				font-family: Helvetica, sans-serif;
+				font-size: 1.2rem;
+				line-height: 1.4;
+			}
+			.container {
+				max-width: 90%;
+				margin: 0 auto;
+				padding: 2.6em 2em;
+			}
+			#canvas {
+				display: block;
+				margin: 1em auto;
+			}
+		</style>
+	</head>
+	<body>
+		<div class="container">
+			<h1 style="text-align: center; margin: 2em">Face Tracking Mesh</h1>
+			<p>
+				Use ml5.js
+				<a href="https://learn.ml5js.org/#/reference/facemesh">facemesh</a> to
+				get the points of a facemesh. These points could be used to
+				<a href="https://editor.p5js.org/AndreasRef/sketches/3dDj1e28Z">
+					overlay images on a face</a
+				>. You could also use the movement of the face to
+				<a href="https://editor.p5js.org/tlsaeger/sketches/JE4LdMT8L"
+					>make a drawing</a
+				>.
+			</p>
+			<p>
+				Having these points and their history also opens up the possibility of
+				using the face as an interface. Make sure to check out the
+				<a href="https://learn.ml5js.org/#/reference/facemesh?id=parameters">
+					options and parameters.</a
+				>
+				Facemesh can track more than one face (up to 10) at a time.
+			</p>
+			<div id="canvas"></div>
+		</div>
+		<script>
+			let video, img;
+			let nose = [];
+			let predictions = [];
+			function preload() {
+				img = loadImage("dog-face.png");
+			}
+
+			function setup() {
+				createCanvas(640, 360);
+				video = createCapture(VIDEO);
+				const facemesh = ml5.facemesh(video, () => {
+					console.log("model is ready");
+				});
+				facemesh.on("predict", gotResults);
+				video.hide();
+			}
+
+			function gotResults(results) {
+				predictions = results;
+				//console.log(results);
+			}
+
+			function draw() {
+				imageMode(CORNER);
+				image(video, 0, 0, width, height);
+				drawFaceMesh();
+			}
+
+			function drawFaceMesh() {
+				for (let i = 0; i < predictions.length; i++) {
+					const meshPoints = predictions[i].scaledMesh;
+					// use the .annotations data to get points for specific parts
+					// .annotations also has things like annotations.leftEyeLower... and .annotations.lipsLowerOuter.  Uncomment the line below to console.log the mesh
+					//console.log(meshPoints);
+
+					//get the point at the tip of the nose
+					nose = predictions[i].annotations.noseTip;
+					imageMode(CENTER);
+					//console.log(nose);
+					//this is an array of one array of 3 vals, the x, y, and z (depth) points
+					for (let j = 0; j < nose.length; j++) {
+						const [x, y, z] = nose[j];
+						//put an image on the face with nose as center point
+						//nudge the y value up just a bit on the canvas
+						image(img, x / 2, y / 2 - 20, 300, 300);
+					}
+
+					//uncomment below to draw a face mesh with all of the mesh points
+
+					/* 	for (let k = 0; k < meshPoints.length; k++) {
+						const [x, y, z] = meshPoints[k];
+
+						fill(0, 255, 15);
+						ellipse(x / 2, y / 2, 4);
+						textSize(10);
+						// fill(255); //uncomment this line and below to draw the index val of each point
+						// text(k, x / 2, y / 2);
+					} */
+				}
+			}
+		</script>
+	</body>
+</html>
