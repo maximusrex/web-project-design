@@ -1,0 +1,80 @@
+
+body{
+    margin:0;
+    padding:0;
+    width:100vw;
+    font-family: 'Open Sans', sans-serif; 
+}
+
+h1,h2,h3,h4,h5,h6{
+    font-family: 'Limelight', cursive;
+}
+
+.container{
+    padding:0;
+    margin:0;
+}
+
+#canvasDiv .photoboothHeader {
+    position: absolute;
+    text-align: center;
+    width: 600px;
+    margin: 0 auto;
+    padding: 1.6em 1em;
+}
+
+.photoreelContainer {
+    width: 100%;
+    text-align: center;
+    padding: 1em 2em;
+}
+
+#canvasDiv {
+    width:100%;
+    display: flex;
+    justify-content: center;
+    padding: 1.4em 1em;
+}
+
+#photoreel {
+    max-width: 100%;
+    display: flex;
+    justify-content:center;
+    flex-wrap: wrap;
+}
+
+#photoreel ul {
+    list-style-type: none;
+}
+
+#photoreel ul li {
+    display: inline-flex;
+}
+
+#photoreel img {
+    margin: 0.2em;
+}
+
+button.interface {
+    margin: 6px;
+    min-width: 180px;
+    padding: 8px 6px;
+    font-size: 1.4em;
+}
+
+#buttonInterface {
+    text-align: center;
+    width: 100%;
+    padding: 2em 1em;
+}
+
+#messageInput {
+    text-align: center;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+button.active{
+    border: 2px solid rgb(242, 8, 8);
+}
