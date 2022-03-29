@@ -6,9 +6,26 @@
 		<script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.2.0/p5.min.js"></script>
 		<!-- ml5 -->
 		<script src="https://unpkg.com/ml5@latest/dist/ml5.min.js"></script>
+		<style>
+			.main {
+				font-family: Arial, Helvetica, sans-serif;
+				color: #333333;
+				line-height: 1.2;
+				padding: 1em;
+				max-width: 80%;
+				margin: 1em auto;
+			}
+		</style>
 	</head>
-	<div id="canvas"></div>
 	<body>
+		<div class="main">
+			<h1>Object Detection with ML5.js</h1>
+			<p>
+				A simple JavaScript library running detection & classification with a
+				pre-trained model.
+			</p>
+			<div id="canvas"></div>
+		</div>
 		<script>
 			let detections = [];
 			let canvas;
@@ -21,7 +38,7 @@
 			}
 			function draw() {
 				image(capture, 0, 0, width, height);
-				//draw results here!
+				//draw results
 				for (let i = 0; i < detections.length; i++) {
 					let object = detections[i];
 					stroke(0, 255, 0);
@@ -42,7 +59,7 @@
 						if (err) {
 							console.error(err);
 						} else {
-							console.log(results);
+							//console.log(results);
 							detections = results;
 							detectObject();
 						}

@@ -29,34 +29,13 @@
 	<body>
 		<div class="container">
 			<h1 style="text-align: center; margin: 2em">Face Tracking Mesh</h1>
-			<p>
-				Use ml5.js
-				<a href="https://learn.ml5js.org/#/reference/facemesh">facemesh</a> to
-				get the points of a facemesh. These points could be used to
-				<a href="https://editor.p5js.org/AndreasRef/sketches/3dDj1e28Z">
-					overlay images on a face</a
-				>. You could also use the movement of the face to
-				<a href="https://editor.p5js.org/tlsaeger/sketches/JE4LdMT8L"
-					>make a drawing</a
-				>.
-			</p>
-			<p>
-				Having these points and their history also opens up the possibility of
-				using the face as an interface. Make sure to check out the
-				<a href="https://learn.ml5js.org/#/reference/facemesh?id=parameters">
-					options and parameters.</a
-				>
-				Facemesh can track more than one face (up to 10) at a time.
-			</p>
+
 			<div id="canvas"></div>
 		</div>
 		<script>
 			let video, img;
-			let nose = [];
+			//let nose = [];
 			let predictions = [];
-			function preload() {
-				img = loadImage("dog-face.png");
-			}
 
 			function setup() {
 				createCanvas(640, 360);
@@ -87,7 +66,7 @@
 					//console.log(meshPoints);
 
 					//get the point at the tip of the nose
-					nose = predictions[i].annotations.noseTip;
+					/*nose = predictions[i].annotations.noseTip;
 					imageMode(CENTER);
 					//console.log(nose);
 					//this is an array of one array of 3 vals, the x, y, and z (depth) points
@@ -97,18 +76,15 @@
 						//nudge the y value up just a bit on the canvas
 						image(img, x / 2, y / 2 - 20, 300, 300);
 					}
-
+					*/
 					//uncomment below to draw a face mesh with all of the mesh points
 
-					/* 	for (let k = 0; k < meshPoints.length; k++) {
+					for (let k = 0; k < meshPoints.length; k++) {
 						const [x, y, z] = meshPoints[k];
 
 						fill(0, 255, 15);
 						ellipse(x / 2, y / 2, 4);
-						textSize(10);
-						// fill(255); //uncomment this line and below to draw the index val of each point
-						// text(k, x / 2, y / 2);
-					} */
+					}
 				}
 			}
 		</script>
